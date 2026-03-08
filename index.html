@@ -57,18 +57,41 @@
         .invila-row {
             background: rgba(16, 185, 129, 0.05);
         }
+
+        /* --- CSS Tambahan Tombol WhatsApp Melayang --- */
+        .wa-float {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .wa-float:active {
+            transform: scale(0.95);
+        }
+        @media (max-width: 640px) {
+            .wa-float span {
+                display: none;
+            }
+            .wa-float {
+                padding: 12px;
+                border-radius: 50%;
+            }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen pb-20">
-
-    <!-- METADATA: 
-    Palet: Vibrant Ocean (Slate-900 bg, Emerald, Cyan, Violet accents). 
-    Rencana Narasi: 
-    1. Hook: Tantangan limbah tekstil kapas yang panas & berlemak.
-    2. Proses: Alur saluran kontinu ultra-compact.
-    3. Komparasi: Tabel & Grafik Perbandingan Invila vs Konvensional.
-    4. Analitik: Transformasi suhu & pH.
-    Konfirmasi: Saya mengonfirmasi secara eksplit bahwa Mermaid JS dan SVG TIDAK digunakan. -->
 
     <nav class="sticky top-0 z-50 glass-panel border-b border-slate-700 px-6 py-4 mb-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -92,7 +115,6 @@
             </p>
         </header>
 
-        <!-- Bagian 1: Arsitektur Proses -->
         <div class="mb-20">
             <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">Arsitektur Proses & Dinamika Aliran</h2>
             <p class="text-slate-300 mb-8">
@@ -148,12 +170,10 @@
             </div>
         </div>
 
-        <!-- Bagian 2: KOMPARASI INVILA™ VS KONVENSIONAL -->
         <div class="mb-20">
             <h2 class="text-3xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Komparasi Invila™ dengan Teknologi Konvensional</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <!-- Efisiensi Kimia Oxy-Pure -->
                 <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl">
                     <h3 class="text-2xl font-bold text-cyan-400 mb-4">1. Efisiensi Kimia Oxy-Pure</h3>
                     <p class="text-slate-300 mb-6 text-sm">
@@ -164,7 +184,6 @@
                     </div>
                 </div>
 
-                <!-- Optimasi Lahan Ultra-Compact -->
                 <div class="bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-xl">
                     <h3 class="text-2xl font-bold text-cyan-400 mb-4">2. Optimasi Lahan & Konstruksi</h3>
                     <p class="text-slate-300 mb-6 text-sm">
@@ -176,7 +195,6 @@
                 </div>
             </div>
 
-            <!-- Tabel Perbandingan Utama -->
             <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
                 <div class="p-6 border-b border-slate-700 bg-slate-800/50">
                     <h3 class="text-2xl font-bold text-white">Tabel Perbandingan Keunggulan</h3>
@@ -225,7 +243,6 @@
             </div>
         </div>
 
-        <!-- Bagian 3: Analitik Eksisting -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-xl">
                 <h3 class="text-xl font-bold text-white mb-4">Transformasi Perjalanan Air</h3>
@@ -247,6 +264,13 @@
         <p>Sistem Terintegrasi Invila™ | Dokumentasi Perbandingan Teknologi & Efisiensi</p>
         <p class="text-xs mt-2">Didesain untuk Efisiensi Energi & Lahan Ekstrem.</p>
     </footer>
+
+    <a href="https://wa.me/6285890135859?text=Mohon%20informasi%20lanjut%20mengenai%20Pengolahan%20Performa%20Tinggi%20untuk%20Limbah%20Tekstil%20Kapas." class="wa-float" target="_blank">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.04 2C6.5 2 2 6.5 2 12.04C2 13.81 2.46 15.5 3.33 17L2.03 21.8L7 20.5C8.44 21.3 10.05 21.75 11.82 21.75C11.89 21.75 11.97 21.75 12.04 21.75C17.58 21.75 22.08 17.25 22.08 11.71C22.08 9.03 21.04 6.5 19.14 4.6C17.24 2.7 14.71 1.66 12.04 1.66V2M12.04 3.11C14.31 3.11 16.45 4 18.06 5.61C19.67 7.22 20.56 9.36 20.56 11.63C20.56 16.32 16.74 20.14 12.05 20.14C10.55 20.14 9.09 19.74 7.82 19L7.52 18.82L4.55 19.6L5.33 16.71L5.13 16.39C4.33 15.11 3.91 13.63 3.91 12.12C3.91 7.64 7.56 4 12.04 4V3.11M8.84 7.52C8.6 7.52 8.21 7.61 7.88 7.97C7.55 8.33 6.61 9.22 6.61 11.03C6.61 12.84 7.93 14.59 8.11 14.83C8.29 15.07 10.71 18.81 14.43 20.41C15.31 20.79 16 21 16.54 21.18C17.43 21.46 18.23 21.42 18.87 21.33C19.58 21.22 21.06 20.43 21.36 19.58C21.66 18.73 21.66 18 21.57 17.85C21.48 17.7 21.24 17.61 20.88 17.43C20.52 17.25 18.74 16.37 18.41 16.25C18.08 16.13 17.84 16.07 17.6 16.43C17.36 16.79 16.67 17.61 16.46 17.85C16.25 18.09 16.04 18.12 15.68 17.94C15.32 17.76 14.16 17.38 12.78 16.15C11.71 15.2 10.99 14.03 10.78 13.67C10.57 13.31 10.76 13.11 10.94 12.93C11.1 12.77 11.3 12.51 11.48 12.27C11.66 12.03 11.72 11.85 11.84 11.61C11.96 11.37 11.9 11.16 11.81 10.98C11.72 10.8 11.03 9.11 10.74 8.41C10.46 7.72 10.17 7.82 9.95 7.82C9.74 7.82 9.49 7.82 9.25 7.82C9.01 7.82 8.62 7.91 8.35 8.18C8.07 8.46 7.33 9.2 7.33 11.01C7.33 12.82 8.65 14.56 8.83 14.8C9.01 15.04 11.42 18.78 15.13 20.38C16.01 20.76 16.7 20.97 17.24 21.15C18.13 21.43 18.93 21.39 19.57 21.3C20.28 21.19 21.76 20.4 22.06 19.55C22.36 18.7 22.36 17.97 22.27 17.82C22.18 17.67 21.94 17.58 21.58 17.4C21.22 17.22 19.44 16.34 19.11 16.22C18.78 16.1 18.54 16.04 18.3 16.4C18.06 16.76 17.37 17.58 17.16 17.82C16.95 18.06 16.74 18.09 16.38 17.91C16.02 17.73 14.86 17.35 13.48 16.12C12.41 15.17 11.69 14 11.48 13.64C11.27 13.28 11.46 13.08 11.64 12.9C11.8 12.74 12 12.48 12.18 12.24C12.36 12 12.42 11.82 12.54 11.58C12.66 11.34 12.6 11.13 12.51 10.95C12.42 10.77 11.73 9.08 11.44 8.38C11.16 7.69 10.87 7.79 10.65 7.79" />
+        </svg>
+        <span>Tanya Invila™</span>
+    </a>
 
     <script>
         // FUNGSI WRAPPING LABEL (MANDATORY > 16 CHARS)
