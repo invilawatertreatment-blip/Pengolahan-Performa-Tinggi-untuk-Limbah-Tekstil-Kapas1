@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Terintegrasi Invila™ - Analitik Performa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+        .flow-arrow {
+            color: #0ea5e9;
+            font-size: 2rem;
+            line-height: 1;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-20">
+
+    <!-- METADATA: 
+    Palet: Vibrant Ocean (Latar Slate-900, aksen Emerald, Cyan, Violet). 
+    Rencana: 1. Header/Konteks, 2. Flowchart Proses HTML, 3. Grafik Garis Fisika-Kimia, 4. Grafik Batang/Doughnut Dinamika Aliran. 
+    Grafik: Line (Tujuan: Perubahan seiring waktu -> terbaik untuk pelacakan Suhu/pH), Bar (Tujuan: Perbandingan -> terbaik untuk Neraca Massa), Doughnut (Tujuan: Komposisi -> terbaik untuk pemisahan aliran). 
+    Konfirmasi: Saya mengonfirmasi secara eksplisit bahwa BAIK Mermaid JS MAUPUN SVG tidak digunakan di mana pun dalam output ini. -->
+
+    <nav class="sticky top-0 z-50 glass-panel border-b border-slate-700 px-6 py-4 mb-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                ⚙️ INVILA™
+            </div>
+            <div class="text-sm text-slate-400 font-semibold tracking-wider uppercase">
+                Analitik Sistem Terintegrasi
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Pengolahan Performa Tinggi untuk <span class="text-cyan-400">Limbah Tekstil Kapas</span>
+            </h1>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Sistem Terintegrasi Invila™ dirancang untuk menaklukkan tantangan limbah industri terberat: Suhu Ekstrem, Alkalinitas Tinggi, dan Kandungan Lemak Kapas yang Berat. Dengan memaksimalkan efisiensi energi dan pemulihan kimia, sistem ini mengubah limbah berbahaya menjadi air bersih yang siap digunakan kembali.
+            </p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div class="bg-slate-800 rounded-xl p-6 border-t-4 border-red-500 shadow-lg">
+                <div class="text-4xl mb-4">🌡️</div>
+                <h3 class="text-xl font-bold text-white mb-2">Suhu Tinggi</h3>
+                <p class="text-slate-400 text-sm">Limbah masuk pada suhu kritis 60°C, membutuhkan pendinginan Aero-Pulse yang agresif dan anti-sumbat untuk mencegah kegagalan sistem.</p>
+            </div>
+            <div class="bg-slate-800 rounded-xl p-6 border-t-4 border-purple-500 shadow-lg">
+                <div class="text-4xl mb-4">🧪</div>
+                <h3 class="text-xl font-bold text-white mb-2">pH Ekstrem</h3>
+                <p class="text-slate-400 text-sm">Masuk pada pH sangat alkalin 12.35, sistem menggunakan pemisahan aliran internal untuk netralisasi mandiri yang menghemat biaya kimia secara masif.</p>
+            </div>
+            <div class="bg-slate-800 rounded-xl p-6 border-t-4 border-amber-500 shadow-lg">
+                <div class="text-4xl mb-4">🕯️</div>
+                <h3 class="text-xl font-bold text-white mb-2">Lemak Kapas Tinggi</h3>
+                <p class="text-slate-400 text-sm">Lemak kapas (wax) cepat menyumbat media standar. Oksidasi Fenton Lanjut (pH 4.0) menghancurkan struktur lemak sebelum pengolahan biologi.</p>
+            </div>
+        </section>
+
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">Perjalanan Transformasi Fisika-Kimia</h2>
+            <p class="text-slate-300 mb-8">
+                Inovasi utama sistem Invila™ adalah kemampuannya untuk memanipulasi suhu dan pH secara agresif melalui tahapan berurutan. Grafik ini memetakan perjalanan dari kondisi limbah mentah yang volatil menuju air olahan yang stabil, menyoroti penurunan pH pada tahap oksidasi Fenton.
+            </p>
+            <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700">
+                <div class="chart-container">
+                    <canvas id="journeyChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">Arsitektur Proses & Dinamika Aliran</h2>
+            <p class="text-slate-300 mb-8">
+                Visualisasi pemrosesan fisik dan kimia langkah demi langkah. Arsitektur ini bergantung pada pemisahan aliran strategis (Split 1 & 2) dan loop reinjeksi masif untuk menjaga kondisi optimal bagi tahap Oksidasi Lanjut dan biologi MBBR tanpa overdosis bahan kimia eksternal.
+            </p>
+            
+            <div class="bg-slate-900 border border-slate-700 rounded-2xl p-8 mb-12 overflow-x-auto">
+                <div class="flex flex-col items-center min-w-[600px]">
+                    <div class="flow-card border-red-500 w-96">
+                        <span class="text-red-400 font-bold tracking-widest text-sm uppercase">Tahap 1: Inlet</span>
+                        <h3 class="text-xl font-bold mt-1">Limbah Mentah (Influent)</h3>
+                        <p class="text-slate-300 mt-2 font-mono text-sm">104.17 m³/jam | 60°C | pH 12.35</p>
+                    </div>
+                    
+                    <div class="flow-arrow">⬇</div>
+                    
+                    <div class="flow-card border-cyan-500 w-96">
+                        <span class="text-cyan-400 font-bold tracking-widest text-sm uppercase">Tahap 2: Pengolahan Fisik</span>
+                        <h3 class="text-xl font-bold mt-1">01. Aero-Pulse Cooling</h3>
+                        <p class="text-slate-300 mt-2 text-sm">Pendinginan tanpa media menurunkan suhu ke 44.2°C</p>
+                    </div>
+
+                    <div class="flow-arrow">⬇</div>
+                    
+                    <div class="w-full flex justify-center gap-8 relative">
+                        <div class="absolute top-0 left-1/2 w-1/2 h-8 border-t-2 border-l-2 border-slate-600 -translate-x-full rounded-tl-lg"></div>
+                        <div class="absolute top-0 right-1/2 w-1/4 h-8 border-t-2 border-r-2 border-slate-600 translate-x-full rounded-tr-lg"></div>
+                        
+                        <div class="mt-8 flow-card border-blue-500 w-80">
+                            <span class="text-blue-400 font-bold tracking-widest text-sm uppercase">Split 1: Aliran Utama (95%)</span>
+                            <h3 class="text-lg font-bold mt-1">02. Bak Stok & Dilusi</h3>
+                            <p class="text-slate-300 mt-2 text-sm">+ Reinjeksi (182.3 m³/jam @ 30°C)</p>
+                            <p class="text-emerald-400 font-mono mt-1 text-sm">Hasil: 35°C | pH 8.5</p>
+                        </div>
+                        
+                        <div class="mt-8 flow-card border-purple-500 w-64 opacity-80">
+                            <span class="text-purple-400 font-bold tracking-widest text-sm uppercase">Split 1: Bypass (5%)</span>
+                            <h3 class="text-lg font-bold mt-1">Jalur C Penetral</h3>
+                            <p class="text-slate-300 mt-2 text-sm">Menjaga pH 12.35 untuk netralisasi hilir</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex justify-start pl-[calc(50%-10rem)]">
+                         <div class="flow-arrow ml-16">⬇</div>
+                    </div>
+
+                    <div class="flow-card border-fuchsia-500 w-[32rem] mr-auto ml-[calc(50%-16rem)]">
+                        <span class="text-fuchsia-400 font-bold tracking-widest text-sm uppercase">Tahap 4: Oksidasi Lanjut</span>
+                        <h3 class="text-xl font-bold mt-1">03. Reaktor Fenton (Split 2)</h3>
+                        <div class="grid grid-cols-2 gap-4 mt-3 text-sm text-left bg-slate-800 p-3 rounded">
+                            <div>• <span class="text-cyan-300">Jalur A (30%):</span> Reaksi Dasar</div>
+                            <div>• <span class="text-cyan-300">Jalur B (65%):</span> Step-Feed 13 Sesi</div>
+                            <div class="col-span-2 text-center text-amber-400 font-mono mt-2">Terkunci pH 4.0 | Katalis Fe2+ | Destruksi Lemak</div>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex justify-center gap-8 relative mt-4">
+                        <div class="flow-arrow">⬇</div>
+                    </div>
+
+                    <div class="flow-card border-indigo-500 w-96 relative">
+                        <span class="text-indigo-400 font-bold tracking-widest text-sm uppercase">Tahap 5: Netralisasi</span>
+                        <h3 class="text-xl font-bold mt-1">04. Mixing Akhir</h3>
+                        <p class="text-slate-300 mt-2 text-sm">Efluen Fenton bertemu Jalur C (Bypass)</p>
+                        <p class="text-emerald-400 font-mono mt-1 text-sm">Netralisasi Mandiri ke pH 8.5</p>
+                    </div>
+
+                    <div class="flow-arrow">⬇</div>
+
+                    <div class="flow-card border-emerald-500 w-96">
+                        <span class="text-emerald-400 font-bold tracking-widest text-sm uppercase">Tahap 6 & 7: Polish & Reuse</span>
+                        <h3 class="text-xl font-bold mt-1">MBBR, Lamella & Filtrasi Akhir</h3>
+                        <p class="text-slate-300 mt-2 text-sm">Degradasi biologi kedalaman 8m + filtrasi halus</p>
+                        <div class="mt-4 p-2 bg-emerald-900/50 border border-emerald-500 rounded font-mono text-emerald-300">
+                            ♻️ Output: 104.17 m³/jam | 30°C
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Neraca Massa Volumetrik</h3>
+                <p class="text-slate-400 mb-6 text-sm">
+                    Grafik ini memvisualisasikan resirkulasi internal masif yang diperlukan untuk menjaga efisiensi sistem. Meskipun pabrik mengeluarkan volume yang sama dengan input (104.17 m³/jam), reaktor internal memproses hampir tiga kali lipat volume tersebut untuk memfasilitasi pendinginan mandiri dan dilusi.
+                </p>
+                <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700">
+                    <div class="chart-container">
+                        <canvas id="massBalanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Alokasi Aliran Reaktor Fenton</h3>
+                <p class="text-slate-400 mb-6 text-sm">
+                    Jantung kimia sistem bergantung pada pemisahan aliran yang presisi. Dengan menggunakan Step-Feed 13 sesi (65%) alih-alih memasukkan seluruh limbah sekaligus ke reaktor, sistem mencegah kejutan kimia dan memastikan penghancuran total lemak kapas.
+                </p>
+                <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 flex items-center justify-center">
+                    <div class="chart-container">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-slate-800 mt-12 py-8 text-center text-slate-500">
+        <p>Sistem Terintegrasi Invila™ | Dokumentasi Teknis & Visualisasi Data</p>
+        <p class="text-xs mt-2">Didesain sesuai Standar Permenkes No. 3 Tahun 2023.</p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const standardTooltipPlugin = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        Chart.defaults.color = '#cbd5e1';
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+
+        const ctxJourney = document.getElementById('journeyChart').getContext('2d');
+        const journeyLabels = ['1. Limbah Mentah', '2. Aero-Pulse', '3. Dilusi Bak Stok', '4. Reaktor Fenton', '5. Mixing Akhir', '6. Air Bersih'].map(wrapLabel);
+        
+        new Chart(ctxJourney, {
+            type: 'line',
+            data: {
+                labels: journeyLabels,
+                datasets: [
+                    {
+                        label: 'Suhu (°C)',
+                        data: [60, 44.2, 35, 35, 35, 30],
+                        borderColor: '#f97316',
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#f97316',
+                        pointRadius: 6,
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Tingkat pH',
+                        data: [12.35, 12.35, 8.5, 4.0, 8.5, 8.5],
+                        borderColor: '#06b6d4',
+                        backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#06b6d4',
+                        pointRadius: 6,
+                        yAxisID: 'y1',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    ...standardTooltipPlugin,
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: 'Suhu (°C)' },
+                        min: 20,
+                        max: 70,
+                        grid: { color: '#334155' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'Tingkat pH' },
+                        min: 0,
+                        max: 14,
+                        grid: { drawOnChartArea: false }
+                    }
+                }
+            }
+        });
+
+        const ctxMass = document.getElementById('massBalanceChart').getContext('2d');
+        const massLabels = ['Limbah Mentah', 'Loop Reinjeksi', 'Total Diproses', 'Output Akhir'].map(wrapLabel);
+        
+        new Chart(ctxMass, {
+            type: 'bar',
+            data: {
+                labels: massLabels,
+                datasets: [{
+                    label: 'Volume Aliran (m³/jam)',
+                    data: [104.17, 182.30, 286.47, 104.17],
+                    backgroundColor: [
+                        '#ef4444', 
+                        '#3b82f6', 
+                        '#8b5cf6', 
+                        '#10b981'  
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...standardTooltipPlugin,
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Meter Kubik per Jam (m³/jam)' },
+                        grid: { color: '#334155' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        const ctxAlloc = document.getElementById('allocationChart').getContext('2d');
+        const allocLabels = ['Jalur A (Aliran Dasar)', 'Jalur B (Step-Feed 13 Sesi)', 'Jalur C (Bypass Penetral Alami)'].map(wrapLabel);
+
+        new Chart(ctxAlloc, {
+            type: 'doughnut',
+            data: {
+                labels: allocLabels,
+                datasets: [{
+                    data: [30, 65, 5],
+                    backgroundColor: [
+                        '#0ea5e9', 
+                        '#6366f1', 
+                        '#ec4899'  
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#1e293b',
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    ...standardTooltipPlugin,
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
